@@ -11,9 +11,8 @@ type StatesDefinition<State extends object, Events> = Record<string, EventsDefin
 @Component("state-machine")
 export class StateMachineComponent<Events extends Record<string, object>, State extends object> {
   private currentStateName?: string
-  private currentStateValues?: State
 
-  constructor(private states: StatesDefinition<State, Events>) {}
+  constructor(private states: StatesDefinition<State, Events>, private currentStateValues?: State) {}
 
   setState(stateName: string, params: Readonly<State>) {
     if (stateName in this.states) {
